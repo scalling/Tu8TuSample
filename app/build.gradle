@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+//kotlin需要加入的插件
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-kapt'
+//定义当前打包时间
+static def packageTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC-8"))
+}
+//kotlin需要加入的插件
+//kapt {
+//    generateStubs = true
+//}
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion '28.0.3'
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        applicationId "com.zm.tu8tu.sample"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false   //混淆
+            shrinkResources false //是否打包删除无用资源
+            zipAlignEnabled false //zip优化
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "false"
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled true   //混淆
+            shrinkResources true //是否打包删除无用资源
+            zipAlignEnabled true //zip优化
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    //修改生成的最终文件名
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name == "release") {
+                // 输出APK名称为：XX-V1.0.0-2017-01-01-release.apk
+                outputFileName =
+                        "test-V${defaultConfig.versionName}-${packageTime()}-release.apk"
+            } else {
+                // 输出APK名称为：XX-V1.0.0-2017-01-01-debug.apk
+                outputFileName = "test-V${defaultConfig.versionName}-${packageTime()}-debug.apk"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'support-annotations'
+    }
+    //网络请求
+    implementation rootProject.ext.dependencies["arms"]
+    implementation rootProject.ext.dependencies["filedownloader"]
+    implementation rootProject.ext.dependencies["progressmanager"]
+    implementation rootProject.ext.dependencies["retrofit-url-manager"]
+    //view
+    //implementation rootProject.exe.dependencies["loading-avi"]
+    implementation rootProject.ext.dependencies["loadding"]
+    implementation rootProject.ext.dependencies["nineoldandroids"]
+    implementation rootProject.ext.dependencies["agentweb_x5"]
+    implementation rootProject.ext.dependencies["smartRefreshLayout"]
+    implementation rootProject.ext.dependencies["smartRefreshHeader"]
+    //tools
+    implementation rootProject.ext.dependencies["multidex"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+
+    //kotlin需要加入的插件
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //kapt rootProject.ext.dependencies["dagger2-compiler"]
+   // kapt rootProject.ext.dependencies["butterknife-compiler"]
+
+    //test
+    implementation rootProject.ext.dependencies["logger"]
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+    testImplementation rootProject.ext.dependencies["canary-release"]
+}
+
+
+
+
+
+
+
