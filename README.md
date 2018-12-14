@@ -1,9 +1,8 @@
-# Tu8TuSample  仿土巴兔设计图展示
-
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/1.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/2.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/3.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/4.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/5.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/6.png)
-![Image text](https://github.com/scalling/Tu8TuSample/blob/master/screenshot/7.png)
+# Tu8TuSample  仿土巴兔设计图展示，更换装修，整体左右切换
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_1.jpg" width = "250" align="left"/>
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_2.jpg" width = "250" />
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_3.jpg" width = "400" />
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_4.jpg" width = "400"/>
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_5.jpg" width = "400"/>
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_6.jpg" width = "400"/>
+<img src="https://github.com/scalling/Tu8TuSample/blob/master/screenshot/Screenshot_7.jpg" width = "400"/>
